@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AirBnB_Clone_project.Models.Room>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Category/Index.cshtml";
+}
+
+@section Product{
+    <div class="content">
+        <div class="grid wide">
+            <div class="content__container row">
+                @foreach (var pro in Model)
+                {
+                    <div class="content__box col l-3 m-4 c-6">
+                        <div class="content-img__box">
+                            <div class="content__wishlist">
+                                <a href="#" class="content__link"><i class="content-wishlist__icon fa-regular fa-heart"></i></a>
+                            </div>
+                            <div class="content__page">
+                                <p class="content__transition">.<span class="content__transition--no-chosen">....</span></p>
+                            </div>
+                            <div class="content__arrow">
+                                <i class="content-arrow__icon fa-solid fa-angle-right"></i>
+                            </div>
+                            <a href="#" class="content__link">
+                                <img src="https://media.discordapp.net/attachments/1071942135705780264/1162797477494268026/image.png?ex=653d3e8a&is=652ac98a&hm=cc91a87e5f39715dda2a324b9211e9ddf69efad33f31dbc9a59de17215bc082e&=" style="width : 100%; height : 100%" alt="" class="content__img">
+                                @*<img src="@Url.Content(pro.ImagePro)" height="150" width="150" alt="Alternate Text" />*@
+                            </a>
+                        </div>
+                        <div class="content__infomation">
+                            <div class="content__header">
+                                <p>@Html.DisplayFor(model => pro.Room_Name)</p>
+                                <p class="content__rate"><i class="content__icon fa-solid fa-star"></i>4,88</p>
+                            </div>
+                            <p class="content__owner">Chủ nhà: Carmela</p>
+                            <p class="content__date">Ngày 06 - Ngày 11 tháng 11</p>
+                            <p class="content__price">@Html.DisplayFor(model => pro.Price) $ / <span class="content__day">đêm</span></p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+
+

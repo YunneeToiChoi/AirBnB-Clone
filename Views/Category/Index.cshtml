@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AirBnB_Clone_project.Models.Room>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="menu">
+    <div class="grid wide">
+        <div class="menu__container row">
+            <div class="menu-left col l-9 m-12 c-12">
+                <a href="Bear" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_1.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Phòng</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+                <a href="Loading" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_2.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Khung cảnh tuyệt vời</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+                <a href="#" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_3.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Nhà nhỏ</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+                <a href="#" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_4.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Chơi golf</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+                <a href="#" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_5.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Nhà dưới lòng đất</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+                <a href="#" class="menu__box ">
+                    <img src="~/Assests/_image/Menu_image/menu_6.jpg" style="width:26px" alt="" class="menu__img">
+                    <h4 class="menu__header">Dammuso</h4>
+                    <div class="menu__box-border-bt"></div>
+                </a>
+            </div>
+            <div class="menu-right col l-3 m-0 c-0">
+                <div class="menu-right__box navbar__box">
+                    <p class="menu__content">Hiển thị tổng trước thuế</p>
+                    <input type="checkbox" id="checkboxInput">
+                    <label for="checkboxInput" class="toggleSwitch">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @RenderSection("Product", required: false)
+</div>
+
+
