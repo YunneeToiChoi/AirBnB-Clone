@@ -159,10 +159,13 @@
     <Compile Include="Models\Reservation.cs">
       <DependentUpon>AirbnbDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Review.cs">
+    <Compile Include="Models\Reviews.cs">
       <DependentUpon>AirbnbDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Room.cs">
+    <Compile Include="Models\Rooms.cs">
+      <DependentUpon>AirbnbDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>AirbnbDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -195,6 +198,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\Ảnh chụp màn hình %2834%29.png" />
+    <Content Include="Content\image\Ảnh chụp màn hình %28590%29.png" />
+    <Content Include="Content\image\pngtree-plus-icon-3d-illustration-png-image_8957667.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -219,6 +225,7 @@
       <DependentUpon>AirbnbDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

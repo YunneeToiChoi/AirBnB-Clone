@@ -13,10 +13,10 @@ namespace AirBnB_Clone_project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AirbnbDBEntities1 : DbContext
+    public partial class AirbnbDBEntities2 : DbContext
     {
-        public AirbnbDBEntities1()
-            : base("name=AirbnbDBEntities1")
+        public AirbnbDBEntities2()
+            : base("name=AirbnbDBEntities2")
         {
         }
     
@@ -25,11 +25,12 @@ namespace AirBnB_Clone_project.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Host> Hosts { get; set; }
-        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
-        public virtual DbSet<Reservation> Reservations { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Host> Host { get; set; }
+        public virtual DbSet<OrderProduct> OrderProduct { get; set; }
+        public virtual DbSet<Reservation> Reservation { get; set; }
+        public virtual DbSet<Reviews> Reviews { get; set; }
+        public virtual DbSet<Rooms> Rooms { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

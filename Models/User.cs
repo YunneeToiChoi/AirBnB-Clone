@@ -17,7 +17,7 @@ namespace AirBnB_Clone_project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.OrderProducts = new HashSet<OrderProduct>();
+            this.OrderProduct = new HashSet<OrderProduct>();
         }
     
         public int ID_User { get; set; }
@@ -29,6 +29,6 @@ namespace AirBnB_Clone_project.Models
         public string Emergency_Contact { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
+        public virtual ICollection<OrderProduct> OrderProduct { get; set; }
     }
 }

@@ -12,15 +12,12 @@ namespace AirBnB_Clone_project.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public Nullable<int> Reservation_id { get; set; }
-        public Nullable<int> Rating { get; set; }
-        public string Comment { get; set; }
-        public Nullable<int> ID_Host { get; set; }
-    
-        public virtual Host Host { get; set; }
-        public virtual Reservation Reservation { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

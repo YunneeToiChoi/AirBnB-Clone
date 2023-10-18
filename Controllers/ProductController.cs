@@ -2,7 +2,9 @@
 using Antlr.Runtime.Misc;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +14,7 @@ namespace AirBnB_Clone_project.Controllers
     public class ProductController : Controller
     {
         // GET
-        AirbnbDBEntities1 db = new AirbnbDBEntities1();
+        AirbnbDBEntities2 db = new AirbnbDBEntities2();
 
         public int? ID_Cate { get; private set; }
 
@@ -30,7 +32,7 @@ namespace AirBnB_Clone_project.Controllers
         }
         public ActionResult Create()
         {
-            Room room = new Room();
+            Rooms room = new Rooms();
             return View(room);
 
         }
@@ -38,21 +40,43 @@ namespace AirBnB_Clone_project.Controllers
         {
             return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
         }
-        [HttpPost]
+        //[HttpPost]
       
  
-        public ActionResult Create(Room room)
+        //public ActionResult Create(Rooms room)
+        //{
+        //    try
+        //    {
+        //        db.Rooms.Add(room);
+
+        //        db.SaveChanges();
+        //        return RedirectToAction("Control","Product");
+        //    }
+        //    catch
+        //    {
+        //        return Content("Sai roi bro bo di ma lam ng");
+        //    }
+        //}
+        [HttpPost]
+        public ActionResult Create(Rooms pro)
         {
             try
             {
-                db.Rooms.Add(room);
-
+                if (pro.UploadImage != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(pro.UploadImage.FileName);
+                    string extent = Path.GetExtension(pro.UploadImage.FileName);
+                    filename += extent;
+                    pro.Images_Room = "~/Content/image/" + filename;
+                    pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                }
+                db.Rooms.Add(pro);
                 db.SaveChanges();
-                return RedirectToAction("Control","Product");
+                return RedirectToAction("Index");
             }
             catch
             {
-                return Content("Sai roi bro bo di ma lam ng");
+                return View();
             }
         }
         public ActionResult Edit(int id)
@@ -60,7 +84,7 @@ namespace AirBnB_Clone_project.Controllers
             return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult Edit(int id, Room room)
+        public ActionResult Edit(int id, Rooms room)
         {
             try
             {
@@ -78,7 +102,7 @@ namespace AirBnB_Clone_project.Controllers
             return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult Delete(int id, Room room)
+        public ActionResult Delete(int id, Rooms room)
         {
             try
             {   
@@ -98,8 +122,8 @@ namespace AirBnB_Clone_project.Controllers
         }
         public ActionResult SelectCate()
         {
-            Room catels = new Room();
-            catels.ListCate = db.Rooms.ToList<Room>();
+            Rooms catels = new Rooms();
+            catels.ListCate = db.Rooms.ToList<Rooms>();
             return PartialView(catels);
 
         }

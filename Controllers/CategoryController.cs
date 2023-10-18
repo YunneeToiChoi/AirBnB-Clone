@@ -10,7 +10,7 @@ namespace AirBnB_Clone_project.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        AirbnbDBEntities1 db = new AirbnbDBEntities1();
+        AirbnbDBEntities2 db = new AirbnbDBEntities2();
         public ActionResult Index(string name)
         {
             if (name == null)
@@ -27,11 +27,11 @@ namespace AirBnB_Clone_project.Controllers
        
         public ActionResult Create()
         {
-            Room cate = new Room();
+            Rooms cate = new Rooms();
             return View(cate);
         }
         [HttpPost]
-        public ActionResult Create(Room cate)
+        public ActionResult Create(Rooms cate)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace AirBnB_Clone_project.Controllers
             return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult Edit(int id,Room cate)
+        public ActionResult Edit(int id,Rooms cate)
         {
             try
             {

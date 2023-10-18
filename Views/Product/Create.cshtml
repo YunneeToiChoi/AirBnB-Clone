@@ -1,4 +1,4 @@
-﻿@model AirBnB_Clone_project.Models.Room
+﻿@model AirBnB_Clone_project.Models.Rooms
 
 @{
     ViewBag.Title = "Create";
@@ -7,13 +7,13 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div>
-      @Html.ActionLink("Chinh Sua Phong", "Control")
-</div>
+        @Html.ActionLink("Chinh Sua Phong", "Control")
+    </div>
     <div class="form-horizontal">
         <h4>Room</h4>
         <hr />
@@ -33,15 +33,17 @@
                 @Html.ValidationMessageFor(model => model.Room_Name, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
+        @* Image *@
+        <div class="form-group">
             @Html.LabelFor(model => model.Images_Room, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Images_Room, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Images_Room, "", new { @class = "text-danger" })
+                <img src="@Url.Content(Model.Images_Room)" height="150" width="150" id="previewImg" />
             </div>
-        </div>*@
-
+        </div>
+        <div>
+            <input type="file" name="UploadImage" onchange="ChangeImage(this,document.getElementById('previewImg'))" />
+        </div>
+        @* end-image *@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
