@@ -257,6 +257,9 @@
     <Content Include="Views\Product\Control.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Control.cshtml" />
+    <Content Include="Views\Product\SelectCate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

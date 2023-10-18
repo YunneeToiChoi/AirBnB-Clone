@@ -22,27 +22,11 @@
             @Html.DisplayFor(x => item.ID_Cate)
         </span>
     </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Id_Room, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Id_Room)
-        </span>
-    </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Room_Name, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Room_Name)
-        </span>
-    </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Price, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Price)
-        </span>
-    </div>
+
+
     @Html.ActionLink("Edit", "Edit", new { id = item.Id_Room })
     @Html.ActionLink("Detail", "Detail", new { id = item.Id_Room })
     @Html.ActionLink("Delete", "Delete", new { id = item.Id_Room })
