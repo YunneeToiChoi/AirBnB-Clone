@@ -10,11 +10,21 @@ namespace AirBnB_Clone_project.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        AirbnbEntities db = new AirbnbEntities();
-        public ActionResult Index()
+        AirbnbDBEntities1 db = new AirbnbDBEntities1();
+        public ActionResult Index(string name)
         {
-            return View();
+            if (name == null)
+            {
+                return View(db.Rooms.ToList());
+
+
+            }
+            else
+            {
+                return View(db.Rooms.Where(s=>s.Name_Cate.Contains(name)).ToList());
+            }
         }
+       
         public ActionResult Create()
         {
             Room cate = new Room();
@@ -27,12 +37,35 @@ namespace AirBnB_Clone_project.Controllers
             {
                 db.Rooms.Add(cate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Product");
 
             }
             catch
             {
                 return Content("Loi roi bro ");
+            }
+        }
+        public ActionResult Detail(int id)
+        {
+            return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
+
+        }
+        public ActionResult Edit(int id)
+        {
+            return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Edit(int id,Room cate)
+        {
+            try
+            {
+                db.Entry(cate).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("Sai roi bro, xoa di ma lam nguoi");
             }
         }
     }

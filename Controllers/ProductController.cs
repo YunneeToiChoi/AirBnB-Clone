@@ -1,4 +1,5 @@
 ﻿using AirBnB_Clone_project.Models;
+using Antlr.Runtime.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,10 @@ namespace AirBnB_Clone_project.Controllers
     public class ProductController : Controller
     {
         // GET
-        AirbnbEntities db = new AirbnbEntities();
+        AirbnbDBEntities1 db = new AirbnbDBEntities1();
+
+        public int? ID_Cate { get; private set; }
+
         public ActionResult Index()
         {
             return View(db.Rooms.ToList());
@@ -29,15 +33,61 @@ namespace AirBnB_Clone_project.Controllers
             return View(room);
 
         }
+        public ActionResult Detail(int id)
+        {
+            return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
+        }
         [HttpPost]
+      
+ 
         public ActionResult Create(Room room)
         {
-            
                 db.Rooms.Add(room);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Control");
             
-
+          
+        }
+        public ActionResult Edit(int id)
+        {
+            return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, Room room)
+        {
+            try
+            {
+                db.Entry(room).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("Sai roi bro, xoa di ma lam nguoi");
+            }
+        }
+        public ActionResult Delete(int id)
+        {
+            return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, Room room)
+        {
+            try
+            {   
+                room = db.Rooms.Where(s=>s.Id_Room == id).FirstOrDefault();
+                db.Rooms.Remove(room);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("Sai roi bro, xoa di ma lam nguoi");
+            }
+        }
+        public ActionResult Control()
+        {
+            return View(db.Rooms.ToList());
         }
 
     }

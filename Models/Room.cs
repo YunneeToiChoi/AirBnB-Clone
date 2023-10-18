@@ -17,7 +17,6 @@ namespace AirBnB_Clone_project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.Categories = new HashSet<Category>();
             this.Reservations = new HashSet<Reservation>();
         }
     
@@ -29,9 +28,9 @@ namespace AirBnB_Clone_project.Models
         public string Home_types { get; set; }
         public string Room_types { get; set; }
         public Nullable<int> ID_Host { get; set; }
+        public Nullable<int> ID_Cate { get; set; }
+        public string Name_Cate { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories { get; set; }
         public virtual Host Host { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }

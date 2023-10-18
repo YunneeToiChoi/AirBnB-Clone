@@ -1,0 +1,99 @@
+﻿@model AirBnB_Clone_project.Models.Room
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Room)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Room)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Images_Room)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Images_Room)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Home_types)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Home_types)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Room_types)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room_types)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Host)
+        </dt>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.ID_Host)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Cate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Cate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Cate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Cate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

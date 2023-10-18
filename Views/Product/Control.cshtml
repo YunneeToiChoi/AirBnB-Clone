@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AirBnB_Clone_project.Models.Room>
+
+
+@{
+    ViewBag.Title = "Control";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <p>@Html.DisplayFor(x => item.Name_Cate)</p>
+    <p>@Html.DisplayFor(x => item.ID_Cate)</p>
+    <p>@Html.DisplayFor(x => item.Id_Room)</p>
+    <p>@Html.DisplayFor(x => item.Room_Name)</p>
+    <p>@Html.DisplayFor(x => item.Price)</p>
+    @Html.ActionLink("Edit", "Edit", new { id = item.Id_Room })
+    @Html.ActionLink("Detail", "Detail", new { id = item.Id_Room })
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Room })
+}
