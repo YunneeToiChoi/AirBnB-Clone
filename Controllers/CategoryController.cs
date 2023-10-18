@@ -37,13 +37,18 @@ namespace AirBnB_Clone_project.Controllers
             {
                 db.Rooms.Add(cate);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Control");
 
             }
             catch
             {
                 return Content("Loi roi bro ");
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
         }
         public ActionResult Detail(int id)
         {
@@ -67,6 +72,10 @@ namespace AirBnB_Clone_project.Controllers
             {
                 return Content("Sai roi bro, xoa di ma lam nguoi");
             }
+        }
+        public ActionResult Control()
+        {
+            return View(db.Rooms.ToList());
         }
     }
 }

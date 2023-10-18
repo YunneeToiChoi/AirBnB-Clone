@@ -2,6 +2,7 @@
 using Antlr.Runtime.Misc;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,11 +43,17 @@ namespace AirBnB_Clone_project.Controllers
  
         public ActionResult Create(Room room)
         {
+            try
+            {
                 db.Rooms.Add(room);
+
                 db.SaveChanges();
-                return RedirectToAction("Control");
-            
-          
+                return RedirectToAction("Control","Product");
+            }
+            catch
+            {
+                return Content("Sai roi bro bo di ma lam ng");
+            }
         }
         public ActionResult Edit(int id)
         {
@@ -89,6 +96,12 @@ namespace AirBnB_Clone_project.Controllers
         {
             return View(db.Rooms.ToList());
         }
+        public ActionResult SelectCate()
+        {
+            Room catels = new Room();
+            catels.ListCate = db.Rooms.ToList<Room>();
+            return PartialView(catels);
 
+        }
     }
 }

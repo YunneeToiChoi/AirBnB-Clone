@@ -11,7 +11,8 @@ namespace AirBnB_Clone_project.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Room
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace AirBnB_Clone_project.Models
         {
             this.Reservations = new HashSet<Reservation>();
         }
-    
+        [NotMapped] public  List<Room> ListCate  { get; set; }
         public int Id_Room { get; set; }
         public string Room_Name { get; set; }
         public string Place { get; set; }
