@@ -88,6 +88,14 @@ namespace AirBnB_Clone_project.Controllers
         {
             try
             {
+                if (room.UploadImage != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(room.UploadImage.FileName);
+                    string extent = Path.GetExtension(room.UploadImage.FileName);
+                    filename += extent;
+                    room.Images_Room = "~/Content/image/" + filename;
+                    room.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                }
                 db.Entry(room).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

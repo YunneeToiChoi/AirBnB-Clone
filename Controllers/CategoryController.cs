@@ -1,6 +1,7 @@
 ﻿using AirBnB_Clone_project.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,19 +31,41 @@ namespace AirBnB_Clone_project.Controllers
             Rooms cate = new Rooms();
             return View(cate);
         }
+        //[HttpPost]
+        //public ActionResult Create(Rooms cate)
+        //{
+        //    try
+        //    {
+        //        db.Rooms.Add(cate);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Control");
+
+        //    }
+        //    catch
+        //    {
+        //        return Content("Loi roi bro ");
+        //    }
+        //}
         [HttpPost]
-        public ActionResult Create(Rooms cate)
+        public ActionResult Create(Rooms pro)
         {
             try
             {
-                db.Rooms.Add(cate);
+                if (pro.UploadImage != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(pro.UploadImage.FileName);
+                    string extent = Path.GetExtension(pro.UploadImage.FileName);
+                    filename += extent;
+                    pro.Images_Cate = "~/Content/image/" + filename;
+                    pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                }
+                db.Rooms.Add(pro);
                 db.SaveChanges();
-                return RedirectToAction("Control");
-
+                return RedirectToAction("Index","Product");
             }
             catch
             {
-                return Content("Loi roi bro ");
+                return View();
             }
         }
 

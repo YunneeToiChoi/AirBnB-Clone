@@ -21,6 +21,7 @@ namespace AirBnB_Clone_project.Models
         {
             this.Reservation = new HashSet<Reservation>();
             Images_Room = "~/Content/image/pngtree-plus-icon-3d-illustration-png-image_8957667.png";
+            Images_Cate = "~/Content/image/pngtree-plus-icon-3d-illustration-png-image_8957667.png";
         }
         [NotMapped]
         public HttpPostedFileBase UploadImage{ get; set; }
