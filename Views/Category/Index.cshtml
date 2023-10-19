@@ -12,7 +12,7 @@
                 @foreach (var menu in Model)
                 {
                     <a href="#" class="menu__box ">
-                        <img src="~/Assests/_image/Menu_image/menu_3.jpg" style="width:26px" alt="" class="menu__img">
+                        <img src="@Url.Content(menu.Images_Cate)" style="width:26px" alt="" class="menu__img">
                         <h4 class="menu__header">@Html.DisplayFor(x => menu.Name_Cate)</h4>
                         <div class="menu__box-border-bt"></div>
                     </a>

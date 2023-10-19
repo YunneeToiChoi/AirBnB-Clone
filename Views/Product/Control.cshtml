@@ -8,42 +8,59 @@
 
 @foreach (var item in Model)
 {
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Name_Cate, htmlAttributes: new { @class = "control-label col-md-2" })  :
-
-            @Html.DisplayFor(x => item.Name_Cate)
-        </span>
+    <div class="content__box col l-3 m-4 c-6">
+        <div class="content-img__box">
+            <div class="content__wishlist">
+                <a href="#" class="content__link"><i class="content-wishlist__icon fa-regular fa-heart"></i></a>
+            </div>
+            <div class="content__page">
+                <p class="content__transition">.<span class="content__transition--no-chosen">....</span></p>
+            </div>
+            <div class="content__arrow">
+                <i class="content-arrow__icon fa-solid fa-angle-right"></i>
+            </div>
+            <a href="#" class="content__link">
+                @*<img src="https://media.discordapp.net/attachments/1071942135705780264/1162797477494268026/image.png?ex=653d3e8a&is=652ac98a&hm=cc91a87e5f39715dda2a324b9211e9ddf69efad33f31dbc9a59de17215bc082e&=" style="width : 100%; height : 100%" alt="" class="content__img">*@
+                <img src="@Url.Content(item.Images_Room)" style="width : 282px; height : 188px" alt="Alternate Text" class="content__img" />
+            </a>
+        </div>
     </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.ID_Cate, htmlAttributes: new { @class = "control-label col-md-2" })  :
+        <div>
+            <span>
+                @Html.LabelFor(x => item.Name_Cate, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.ID_Cate)
-        </span>
-    </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Id_Room, htmlAttributes: new { @class = "control-label col-md-2" })  :
+                @Html.DisplayFor(x => item.Name_Cate)
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.LabelFor(x => item.ID_Cate, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Id_Room)
-        </span>
-    </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Room_Name, htmlAttributes: new { @class = "control-label col-md-2" })  :
+                @Html.DisplayFor(x => item.ID_Cate)
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.LabelFor(x => item.Id_Room, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Room_Name)
-        </span>
-    </div>
-    <div>
-        <span>
-            @Html.LabelFor(x => item.Price, htmlAttributes: new { @class = "control-label col-md-2" })  :
+                @Html.DisplayFor(x => item.Id_Room)
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.LabelFor(x => item.Room_Name, htmlAttributes: new { @class = "control-label col-md-2" })  :
 
-            @Html.DisplayFor(x => item.Price)
-        </span>
-    </div>
-    @Html.ActionLink("Edit", "Edit", new { id = item.Id_Room })
-    @Html.ActionLink("Detail", "Detail", new { id = item.Id_Room })
-    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Room })
-}
+                @Html.DisplayFor(x => item.Room_Name)
+            </span>
+        </div>
+        <div>
+            <span>
+                @Html.LabelFor(x => item.Price, htmlAttributes: new { @class = "control-label col-md-2" })  :
+
+                @Html.DisplayFor(x => item.Price)
+            </span>
+        </div>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id_Room })
+        @Html.ActionLink("Detail", "Detail", new { id = item.Id_Room })
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id_Room })
+        }
