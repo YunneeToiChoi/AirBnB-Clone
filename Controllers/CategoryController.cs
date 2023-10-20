@@ -1,77 +1,51 @@
-﻿using AirBnB_Clone_project.Models;
+using AirBnB_Clone_project.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace AirBnB_Clone_project.Controllers
 {
     public class CategoryController : Controller
     {
         // GET: Category
-        AirbnbDBEntities2 db = new AirbnbDBEntities2();
-        public ActionResult Index(string name)
+        AirbnbEntities db = new AirbnbEntities();
+        public ActionResult Category_Index(string name)
         {
+            var item = db.Categories.Where(s => s.Name_Cate.Contains(name)).ToList();
             if (name == null)
             {
-                return View(db.Rooms.ToList());
-
-
+                return PartialView("Category_Index", db.Categories.ToList());
             }
             else
             {
-                return View(db.Rooms.Where(s=>s.Name_Cate.Contains(name)).ToList());
+                return PartialView("Category_Index", db.Categories.Where(s => s.Name_Cate.Contains(name)).ToList());
             }
         }
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
        
         public ActionResult Create()
         {
-            Rooms cate = new Rooms();
+            Room cate = new Room();
             return View(cate);
         }
-        //[HttpPost]
-        //public ActionResult Create(Rooms cate)
-        //{
-        //    try
-        //    {
-        //        db.Rooms.Add(cate);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Control");
-
-        //    }
-        //    catch
-        //    {
-        //        return Content("Loi roi bro ");
-        //    }
-        //}
         [HttpPost]
-        public ActionResult Create(Rooms pro)
+        public ActionResult Create(Room cate)
         {
             try
             {
-                if (pro.UploadImage != null)
-                {
-                    string filename = Path.GetFileNameWithoutExtension(pro.UploadImage.FileName);
-                    string extent = Path.GetExtension(pro.UploadImage.FileName);
-                    filename += extent;
-                    pro.Images_Cate = "~/Content/image/" + filename;
-                    pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
-                }
-                db.Rooms.Add(pro);
+                db.Rooms.Add(cate);
                 db.SaveChanges();
-                return RedirectToAction("Index","Product");
+                return RedirectToAction("Index", "Product");
+
             }
             catch
             {
-                return View();
+                return Content("Loi roi bro ");
             }
-        }
-
-        public ActionResult Delete(int id)
-        {
-            return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
         }
         public ActionResult Detail(int id)
         {
@@ -83,7 +57,7 @@ namespace AirBnB_Clone_project.Controllers
             return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult Edit(int id,Rooms cate)
+        public ActionResult Edit(int id,Room cate)
         {
             try
             {
@@ -96,9 +70,51 @@ namespace AirBnB_Clone_project.Controllers
                 return Content("Sai roi bro, xoa di ma lam nguoi");
             }
         }
-        public ActionResult Control()
-        {
-            return View(db.Rooms.ToList());
-        }
+=======
+        //public ActionResult Delete(int id)
+        //{
+        //    return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
+        //}
+        //public ActionResult Detail(int id)
+        //{
+        //    return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
+
+=======
+        //public ActionResult Delete(int id)
+        //{
+        //    return View(db.Rooms.Where(s => s.Id_Room == id).FirstOrDefault());
+        //}
+        //public ActionResult Detail(int id)
+        //{
+        //    return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
+
+>>>>>>> Stashed changes
+        //}
+        //public ActionResult Edit(int id)
+        //{
+        //    return View(db.Rooms.Where(s => s.ID_Cate == id).FirstOrDefault());
+        //}
+        //[HttpPost]
+        //public ActionResult Edit(int id,Room cate)
+        //{
+        //    try
+        //    {
+        //        db.Entry(cate).State = System.Data.Entity.EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return Content("Sai roi bro, xoa di ma lam nguoi");
+        //    }
+        //}
+        //public ActionResult Control()
+        //{
+        //    return View(db.Rooms.ToList());
+        //}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     }
 }
